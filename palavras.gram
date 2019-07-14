@@ -1,0 +1,11 @@
+#JSGF V1.0;
+
+/**
+ * JSGF Grammar for English counting example
+ */
+
+grammar palavras;
+
+public <palavras> = ( <action> ) +;
+
+<action> = /0.1/ open | /0.1/ close |/0.1/ stop | /0.1/ delete | /100/ error;
