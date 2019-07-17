@@ -68,7 +68,7 @@ def palavrasiniciais():
             pass
         print('text:', text)
         return text
-def confirmacao():
+def confirmacao(text):
     engine.say('You said')
     engine.runAndWait()
     engine.say(text)
@@ -76,6 +76,7 @@ def confirmacao():
     engine.say('You sure?')
     engine.runAndWait()
     time.sleep(1)
+    pubros = ''
     with n as source2:
         print('listen confirmed')
         r2.adjust_for_ambient_noise(source2)
@@ -90,9 +91,22 @@ def confirmacao():
             textconf = 'no'
         print('textconf', textconf)
         if textconf == 'yes':
+            if text == 'left'
+                pubros = 'turn left'
+            elif text == 'right'
+                pubros = 'turn right'
+            elif text == 'go'
+                pubros = 'go ahead'
+            elif text == 'follow'
+                pubros = 'follow-me'
+            elif text == 'dance'
+                pubros = 'dance'
+            elif text == 'stop'
+                pubros = 'stop'
             print('rostopic')
             engine.say('You said')
             engine.runAndWait()
+            
             """try:
                 pub = rospy.Publisher('walk', String, queue_size=1)
                 pub.publish(text)
@@ -101,7 +115,7 @@ def confirmacao():
 while palavra != 'closed':
     rec1 = palavrasiniciais()
     if rec1 == 'left' or rec1 =='right' or rec1 == 'go' or rec1 == 'follow' or rec1 == 'move' or rec1 == 'dance' or rec1 == 'stop':
-        rec2 = confirmacao()
+        rec2 = confirmacao(rec1)
         
         
         
