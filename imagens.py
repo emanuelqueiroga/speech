@@ -24,8 +24,16 @@ class MyApp(App):
         imagem = './gif/00_loading.gif'
         #return ShowImage(source=imagem, anim_delay= 0.1, 
                          #mipmap= True, allow_stretch= True)
+        
         return ShowImage(source=imagem, anim_delay = 0.04) 
         #return ShowImage(source='./gif/theta.jpeg',pos=(0,0),size=(512,512))
+        
+    def tradeimage(self):
+        imagem = './gif/01_happy.gif'
+        #return ShowImage(source=imagem, anim_delay= 0.1, 
+                         #mipmap= True, allow_stretch= True)
+        return ShowImage(source=imagem, anim_delay = 0.04) 
+    
  
 if __name__ == '__main__':
     MyApp().run()

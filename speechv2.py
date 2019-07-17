@@ -22,38 +22,8 @@ import threading
 from kivy.clock import Clock
 import time
 
-os.environ["KIVY_IMAGE"]="pil"
-
-#rgb 40, 40 30
-
-
-
-
-
-class ShowImage(Image):
-   pass    
-
-class MyApp(App):
-    def build(self):
-        print('my app')
-        imagem = './gif/00_loading.gif'
-        #return ShowImage(source=imagem, anim_delay= 0.1, 
-                         #mipmap= True, allow_stretch= True)
-        return ShowImage(source=imagem, anim_delay = 0.04)
-        
-
-        #return ShowImage(source='./gif/theta.jpeg',pos=(0,0),size=(512,512))
- 
-
-if __name__ == '__main__':
-    #Window.clearcolor = (40, 40, 30, 20)
-    MyApp().run()
-    Clock.schedule_once
-        
-        
-#    #time.sleep(2)
-#    #MyApp.on_stop()
-#    print('cacete')
+for index, name in enumerate(sr.Microphone.list_microphone_names()):
+    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
 
 print('aqui')
 engine = pyttsx3.init()
@@ -72,22 +42,22 @@ voices = engine.getProperty('voices')
 engine.say('Hi, my name is Theta. I`m a domestic robot.')
 time.sleep(2)
 engine.runAndWait()
-engine.say('I was raised in cyphy lab for the UFPel, Freedom and IFSul')
-engine.runAndWait()
-time.sleep(2)
-engine.say('My command list is, GO AHEAD, TURN LEFT, TURN RIGHT, STOP, MOVE, FOLLOW-ME and DANCE')
-engine.runAndWait()
-time.sleep(2)
-engine.say('I like dancing, and you?')
-engine.runAndWait()
-time.sleep(2)
-engine.say('Oh my god, it is very nice')
-engine.runAndWait()
-time.sleep(2)
-engine.say('ARE YOU READ?')
-engine.runAndWait()
-time.sleep(2)
-engine.say('Would you like something?')
+#engine.say('I was raised in cyphy lab for the UFPel, Freedom and IFSul')
+#engine.runAndWait()
+#time.sleep(2)
+#engine.say('My command list is, GO AHEAD, TURN LEFT, TURN RIGHT, STOP, MOVE, FOLLOW-ME and DANCE')
+#engine.runAndWait()
+#time.sleep(2)
+#engine.say('I like dancing, and you?')
+#engine.runAndWait()
+#time.sleep(2)
+#engine.say('Oh my god, it is very nice')
+#engine.runAndWait()
+#time.sleep(2)
+#engine.say('ARE YOU READ?')
+#engine.runAndWait()
+#time.sleep(2)
+#engine.say('Would you like something?')
 
 r = sr.Recognizer()
 #help(r)
@@ -102,6 +72,7 @@ while palavra != 'closed':
         teste_conexao = ck.check_host()
         print(teste_conexao)
         audio = r.listen(source)
+        print('escutou')
         if teste_conexao:
             #se on line
             print("google")

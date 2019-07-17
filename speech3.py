@@ -21,16 +21,11 @@ from os import path
 import pyttsx3
 import time
 from check_host import check
-from kivy.app import App
-from kivy.uix.image import Image
-from kivy.uix.widget import Widget
-import os
-from kivy.core.window import Window
 import threading
-from kivy.clock import Clock
 import time
 
-
+for index, name in enumerate(sr.Microphone.list_microphone_names()):
+    print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
 
 print('aqui')
 engine = pyttsx3.init()
@@ -68,25 +63,32 @@ engine.runAndWait()
 
 r = sr.Recognizer()
 #help(r)
-m = sr.Microphone()
+m = sr.Microphone(device_index=4)
 with m as source:
     r.adjust_for_ambient_noise(source)
 #help(r)
+text = 'a'
 palavra = ''
 while palavra != 'closed':
     with sr.Microphone() as source:
         ck = check()
+        text = ''
         teste_conexao = ck.check_host()
         print(teste_conexao)
         audio = r.listen(source)
         print('escutou')
         if teste_conexao:
             #se on line
-            print("google")
+            print("pocket")
             try:
-                text = r.recognize_google(audio)
+                text = r.recognize_sphinx(audio, grammar='palavras.gram')
             except:
                 pass
+#            print("google")
+#            try:
+#                text = r.recognize_google(audio)
+#            except:
+#                pass
         else:
             #se off line
             print("pocket")
@@ -94,7 +96,7 @@ while palavra != 'closed':
                 text = r.recognize_sphinx(audio, grammar='palavras.gram')
             except:
                 pass
-        print("Speech")
+        print("Text:", text)
         
         """
         switch (text)
@@ -113,9 +115,12 @@ while palavra != 'closed':
         """
         
         
+        
+        print(text)
+        if text == 'stop':
+            palavra = text
+        else:
+            text = 'i dont understand! Can you repeat?'
         engine.say(text)
         engine.runAndWait()
-        print(text)
-        if text == 'closed':
-            palavra = text
        # print(g)

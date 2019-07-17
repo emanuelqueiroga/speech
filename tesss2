@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 15 15:08:43 2019
+
+@author: manolo
+"""
+
 import speech_recognition as sr
 from os import path
 from kivy.app import App
@@ -41,7 +49,7 @@ class Imglayout(FloatLayout):
 class MainTApp(App):
 
     
-    im = Image(source='./gif/loading.zip')
+    im = Image(source='./gif/novos/00_loading.gif')
     #im3 = image
     #im2 = Image(source='./gif/05_curious.gif')
     #im2.size_hint_y = 0
@@ -146,7 +154,7 @@ class MainTApp(App):
         self.im.keep_ratio= False
         self.im.keep_data= True
         self.im.anim_delay = 0.004
-        time.sleep(2)
+        time.sleep(20)
         Clock.schedule_once(self.fala, 0)
         
     #def fala(self, value):
@@ -168,7 +176,6 @@ class MainTApp(App):
                 teste_conexao = ck.check_host()
                 print(teste_conexao)
                 audio = r.listen(source)
-                print('tes')
                 if teste_conexao:
                     #se on line
                     print("google")
@@ -188,10 +195,9 @@ class MainTApp(App):
                     print(text)
                 except:
                     pass
-                #if text == 'stop' or text == 'turn left' or text == 'turn right' or text == 'Hello' or text == 'dance' or text == 'go ahead' or text == 'move':
                 if text == 'stop':
                     palavra = 'ok'
-                    print("Palavra=", text)
+                    print("stop")
                     Clock.schedule_once(self.callback1, 2.0)
                 else:
                     engine.say('I dont understand, can you repeat?')

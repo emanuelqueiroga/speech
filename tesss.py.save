@@ -168,7 +168,6 @@ class MainTApp(App):
                 teste_conexao = ck.check_host()
                 print(teste_conexao)
                 audio = r.listen(source)
-                print('tes')
                 if teste_conexao:
                     #se on line
                     print("google")
@@ -188,7 +187,7 @@ class MainTApp(App):
                     print(text)
                 except:
                     pass
-                #if text == 'stop' or text == 'turn left' or text == 'turn right' or text == 'Hello' or text == 'dance' or text == 'go ahead' or text == 'move':
+               zif text == 'stop' or text == 'turn left' or text == 'turn right' or text == 'Hello' or text == 'dance' or text == 'go ahead' or text == 'move':
                 if text == 'stop':
                     palavra = 'ok'
                     print("Palavra=", text)

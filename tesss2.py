@@ -62,95 +62,26 @@ class MainTApp(App):
         #self.c.add_widget(self.im2)
         #root.add_widget(cat);
         #self.apresentacao()
-        Clock.schedule_once(self.callback, 2.0)
-        return root
-        
-    
-    def falainit(self, value):
-        engine.say('Hi, my name is Theta. I`m a domestic robot.')
-        engine.runAndWait()
- 
-    def callback(self, value):
-        
-        self.im.source='./gif/novos/00_loading.gif'
-        self.im.keep_ratio= False
-        self.im.keep_data= True
-        self.im.anim_delay = 0.2
-        #self.c.add_widget(self.im2)
-        #Clock.schedule_once(self.falainit(0))
-        #Clock.schedule_once(self.apresentacao, 2.0)
-        #self.c.clear_widgets()
-        #Clock.schedule_once(self.chamaspeech(0))
-        Clock.schedule_once(self.falainit, 0)
-        Clock.schedule_once(self.curious, 0)
-        #Clock.schedule_once(self.fala, 0)
-        
-        #Clock.schedule_once(self.callback1, 2.0)
-        print('caraca')
-    
-    def chamaspeech(self, value):
-        #fala
-        Clock.schedule_once(self.fala(0))
-    
-    
-    def callback1(self, value):
-        #entendeu a fala e esta esperando a execucao
-        print('callback 1')
-        self.im.source ='./gif/novos/05_curious.gif'
-        self.im.keep_ratio= False
-        self.im.keep_data= True
-        self.im.anim_delay = 0.004
-        Clock.schedule_once(self.callback2, 2.0)
-        Clock.schedule_once(self.falaok, 2.0)
-        
-    def callback2(self, value):
-        self.im.source ='./gif/novos/01_happy.gif'
-        self.im.keep_ratio= False
-        self.im.keep_data= True
-        time.sleep(15)
-        Clock.schedule_once(self.callback3, 2.0)
-    def callback3(self, value):
-        self.im.source ='./gif/novos/03_sleep.gif'
-        self.im.keep_ratio= False
-        self.im.keep_data= True
-        time.sleep(15)
-        Clock.schedule_once(self.callback4, 2.0)
-    def callback4(self, value):
-        self.im.source ='./gif/novos/09_quiet.gif'
-        self.im.keep_ratio= False
-        self.im.keep_data= True
-        time.sleep(15)
-        
-    def falaok(self, value):
-        #fala ok e escreve no topic do ros e fica esperando
-        engine.say('Ok, lets do!')
-        engine.runAndWait()
-        #rostopic escreve
-        #rostopic espera retorno
-        time.sleep(10)
         Clock.schedule_once(self.executou, 2.0)
-        
+        return root
+    
     def executou(self, value):
         #fala ok e escreve no topic do ros e fica esperando
-        engine.say('Done!')
+        engine.say('I dont understand, can you repeat?')
         engine.runAndWait()
-        Clock.schedule_once(self.chamaspeech, 2.0)
+        Clock.schedule_once(self.curious, 2.0)
         
-        #engine.say('Hello, everyone!')
-        #engine.runAndWait()
-        #Clock.schedule_once(self.callback4, 3.0)
     def curious(self, value):
         #entendeu a fala e esta esperando a execucao
         print('callback curious')
-        self.im.source ='./gif/novos/05_curious.gif'
+        self.im.source ='./gif/curious.zip'
         self.im.keep_ratio= False
         self.im.keep_data= True
-        self.im.anim_delay = 0.004
-        time.sleep(2)
-        Clock.schedule_once(self.fala, 0)
+        self.im.anim_delay = 0.01
+        #Clock.schedule_once(self.executou2, 2.0)
+        Clock.schedule_once(self.fala, 2.0)
         
-    #def fala(self, value):
-     #   self.curious()
+        
     def fala(self, value):
         engine.say('Would you like something?')
         engine.runAndWait()
@@ -166,9 +97,8 @@ class MainTApp(App):
             with sr.Microphone() as source:
                 ck = check()
                 teste_conexao = ck.check_host()
-                print(teste_conexao)
+                print("listen")
                 audio = r.listen(source)
-                print('tes')
                 if teste_conexao:
                     #se on line
                     print("google")
@@ -188,16 +118,16 @@ class MainTApp(App):
                     print(text)
                 except:
                     pass
-                #if text == 'stop' or text == 'turn left' or text == 'turn right' or text == 'Hello' or text == 'dance' or text == 'go ahead' or text == 'move':
                 if text == 'stop':
                     palavra = 'ok'
-                    print("Palavra=", text)
+                    print("stop")
                     Clock.schedule_once(self.callback1, 2.0)
                 else:
                     engine.say('I dont understand, can you repeat?')
                     engine.runAndWait()
-
+        
+        
 
 if __name__ == '__main__':
-    #Clock.schedule_once(callback1, 3.0)
-    MainTApp().run()
+        #Clock.schedule_once(callback1, 3.0)
+        MainTApp().run()
