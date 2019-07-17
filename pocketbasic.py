@@ -18,6 +18,8 @@ from std_msgs.msg import String
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
 
+rospy.init_node('speech_rec', anonymous=True)
+
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 #engine.say('Hi, my name is Theta. I`m a domestic robot.')
