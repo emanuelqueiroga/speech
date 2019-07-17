@@ -103,7 +103,7 @@ def confirmacao(text):
                 pubros = 'dance'
             elif text == 'stop':
                 pubros = 'stop'
-            print('rostopic')
+            print('rostopic', pubros)
             engine.say('You said')
             engine.runAndWait()
             
