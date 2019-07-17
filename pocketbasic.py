@@ -91,17 +91,17 @@ def confirmacao(text):
             textconf = 'no'
         print('textconf', textconf)
         if textconf == 'yes':
-            if text == 'left'
+            if text == 'left':
                 pubros = 'turn left'
-            elif text == 'right'
+            elif text == 'right':
                 pubros = 'turn right'
-            elif text == 'go'
+            elif text == 'go':
                 pubros = 'go ahead'
-            elif text == 'follow'
+            elif text == 'follow':
                 pubros = 'follow-me'
-            elif text == 'dance'
+            elif text == 'dance':
                 pubros = 'dance'
-            elif text == 'stop'
+            elif text == 'stop':
                 pubros = 'stop'
             print('rostopic')
             engine.say('You said')
@@ -109,7 +109,7 @@ def confirmacao(text):
             
             """try:
                 pub = rospy.Publisher('walk', String, queue_size=1)
-                pub.publish(text)
+                pub.publish(pubros)
             except rospy.ROSInnterruptException:
                 pass"""
 while palavra != 'closed':
